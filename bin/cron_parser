@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative '../src/cron_parser'
+
+if ARGV[0]
+  puts CronParser.print_cron(ARGV[0])
+else
+  puts "Error: No arguments, please use the script as follows: './cron_parser \"*/15 0 1,15 * 1-5 /usr/bin/find\"'"
+  exit 1
+end

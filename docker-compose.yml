@@ -1,0 +1,13 @@
+services:
+  web:
+    image: ruby:3-alpine
+    stdin_open: true
+    tty: true
+    command: sh -c "
+      cd /app
+      && gem install bundler
+      && bundle install
+      && bundle exec rspec
+      && bin/cron_parser \"*/15 0 1,15 * 1-5 /usr/bin/find\""
+    volumes:
+      - .:/app
